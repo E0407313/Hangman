@@ -4,10 +4,51 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <script type="module" src="main.js"></script>
+    <title>Hangman</title>
+    <link rel="stylesheet" href="style.css">
   </head>
+  
   <body>
-    <div id="app"></div>
-    <script type="module" src="/main.js"></script>
+    <div id="gameBody">
+      <h1 id="title">[ HANGMAN ]</h1>
+    <!-- <div class ="image"></div> -->
+    <div>
+      <h2 id="guessPokemon">Who's that Pokemon?</h2>
+      <p id="pokemonName">Pokemon to be guessed</p>
+    </div>
+
+    
+    <div id="letters">
+        <button id="1" class = "button">A</button>
+        <button id="2" class = "button">B</button> 
+        <button id="3" class = "button">C</button>   
+        <button id="4" class = "button">D</button>
+        <button id="5" class = "button">E</button> 
+        <button id="6" class = "button">F</button> 
+        <button id="7" class = "button">G</button>
+        <button id="8" class = "button">H</button> 
+        <button id="9" class = "button">I</button> 
+        <button id="10" class = "button">J</button> 
+        <button id="11" class = "button">K</button>
+        <button id="12" class = "button">L</button> 
+        <button id="13" class = "button">M</button>   
+        <button id="14" class = "button">N</button>
+        <button id="15" class = "button">O</button> 
+        <button id="16" class = "button">P</button> 
+        <button id="17" class = "button">Q</button>
+        <button id="18" class = "button">R</button> 
+        <button id="19" class = "button">S</button> 
+        <button id="20" class = "button">T</button> 
+        <button id="21" class = "button">U</button>
+        <button id="22" class = "button">V</button> 
+        <button id="23" class = "button">W</button>   
+        <button id="24" class = "button">X</button>
+        <button id="25" class = "button">Y</button> 
+        <button id="26" class = "button">Z</button> 
+        <button id = "restartButton">Restart</button>
+    </div>
+    <p id="gameStatus">win or loose</p>
+  </div>
   </body>
 </html>
