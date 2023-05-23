@@ -4,22 +4,25 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script type="module" src="main.js"></script>
+    
     <title>Hangman</title>
     <link rel="stylesheet" href="style.css">
+    
   </head>
   
   <body>
     <div id="gameBody">
       <h1 id="title">[ HANGMAN ]</h1>
     <!-- <div class ="image"></div> -->
+    <image id = "man" src="/images/Untitled-Artwork 1.png"></image>
     <div>
       <h2 id="guessPokemon">Who's that Pokemon?</h2>
       <p id="pokemonName">Pokemon to be guessed</p>
+    
     </div>
 
     
-    <div id="letters">
+    <div id="letters" class="buttons">
         <button id="1" class = "button">A</button>
         <button id="2" class = "button">B</button> 
         <button id="3" class = "button">C</button>   
@@ -46,9 +49,11 @@
         <button id="24" class = "button">X</button>
         <button id="25" class = "button">Y</button> 
         <button id="26" class = "button">Z</button> 
-        <button id = "restartButton">Restart</button>
+       
     </div>
+    <button id = "restartButton">Restart</button>
     <p id="gameStatus">win or loose</p>
   </div>
+  <script type="module" src="main.js"></script>
   </body>
 </html>

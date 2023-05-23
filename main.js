@@ -1,27 +1,6 @@
-//RULES OF HANGMAN GAME
-
-//1. Guess the hideen pokemon defined with underscores ("_").
-
-// --> how to get hidden pokemon? 
-//Define the hidden pokemons. (array) 
-//Retreive Hidden pokemon from list. (function)
-
-//2. From the keyboard, start clicking letters to see if they are in the hidden word.
-
-//--> create a keyboard (buttons/div)
-// Define each letter for each button/div
-// --> create a function to check if after clicking button, letters contains the same letters within hidden pokemon (.indexOf) (if...else)
-// --> If letter picked wrong, update wrong guess (disable button), if letter picked right update "pokemonName"
-
-
-//3. check if game is won or lost after 6 turns
-//--> function checkifgamewon / checkifgamelost
-//reset function
-
-
-let pokemon = [
+const pokemon = [
     "MILOTIC",
-    "TINKATON",
+    // "TINKATON",
     // "VOLCARONA",
     // "GENGAR",
     // "AERODACTYL",
@@ -30,83 +9,132 @@ let pokemon = [
 ]
 
 const letters = document.querySelectorAll("button");
+
 let randomPokemon = [];
 let answerPokemon = [];
+let mistakes = null;
 
-let mistakes = 0;
-
+function pokemonToGuess() {
 randomPokemon = pokemon[Math.floor(Math.random() * pokemon.length)];
-// document.getElementById("pokemonName").innerHTML = randomPokemon.replace(/[a-z]/gi, ' _ ');
-let maxMistakes = (randomPokemon.length + 3);
-console.log(maxMistakes)
+//get a random pokemon out of the array of pokemons
 
 for (let i = 0; i < randomPokemon.length; i++) {
     answerPokemon[i] = " _ ";
     
 };
-
 document.getElementById("pokemonName").innerHTML = answerPokemon;
 console.log(answerPokemon);
+//set the indexes of the answer to be "_"
+}
 
-
-// letters.forEach(letter => {
-//     letter.addEventListener("click", () => {
-//         letter = letter.innerHTML;
-//         console.log(letter);
-//         for (let j = 0; j < randomPokemon.length; j++) {
-//         if(randomPokemon[j] === letter) {
-//             answerPokemon[j] = letter;
-//             console.log(answerPokemon);
-//             document.getElementById("pokemonName").innerHTML = answerPokemon;
-//             // randomPokemon.innerHTML = randomPokemon.replace(/[a-z]/gi, ' _ ');
-//             // for ( i = 0; i < randomPokemon.length; i++) {}
-            
-//         } else {
-//             console.log("false");
-//             mistakes ++;
-            
-//             console.log(mistakes);
-//             if (mistakes === maxMistakes) {
-//                 document.getElementById("pokemonName").innerHTML = "The answer was: " + randomPokemon;
-//                 document.getElementById("gameStatus").innerHTML = "You Lost!";
-//               }
-//         }}}
-// )})
-
-
+// function getLetter() {
 letters.forEach(letter => {
     letter.addEventListener("click", () => {
+        console.log(letter)
+        console.log(letter.innerHTML)
         letter = letter.innerHTML;
-        console.log(letter);
-        console.log(maxMistakes);
-        for (let j = 0; j < randomPokemon.length; j++) {
+        
+//set the text of the button clicked to its respective letter        
+        // disable(letter);
+
+            for (let j = 0; j < randomPokemon.length; j++) {
             if(randomPokemon[j] === letter) {
                 answerPokemon[j] = letter;
                 console.log(answerPokemon);
                 document.getElementById("pokemonName").innerHTML = answerPokemon;
                 console.log(randomPokemon)
-                let x = answerPokemon.join('');
-                console.log(x)
-                if (x === randomPokemon) {
-                    document.getElementById("gameStatus").innerHTML = 'You Won!!!';
-                   }
-                   
-
-            }
-          
+                                                     
+            } 
             
         }
-       
-
+        checkWin();
+        checkLoose(letter);
+        
     })
     
 })
+// }
 
-           
-    if (maxMistakes === 0) {
+
+function initialize() {
+pokemonToGuess();
+
+}
+
+//to disable the button on click, I need eventlistener to select it 
+// function disable(letter) {
+//     let buttons = document.getElementsByClassName('button');
+//     for(let a = 0; a < buttons.length; a++){
+//         if(randomPokemon[a] === letter) {
+//             buttons[a].disabled = true;
+//             return;
+//        }
+//     }    
+// }
+
+
+function checkLoose (letter) {
+    for (let k = 0; k < randomPokemon.length; k++) {
+        if(randomPokemon[k] === letter) {        
+            return;                                             
+        }
+    } 
+    
+    mistakes ++; 
+     console.log(mistakes);
+    if (mistakes === 1) {
+        document.getElementById("man").src="/images/Untitled-Artwork 2.png";
+    }
+
+    if (mistakes === 2) {
+        document.getElementById("man").src="/images/Untitled-Artwork 3.png";
+    }
+
+    if (mistakes === 3) {
+        document.getElementById("man").src="/images/Untitled-Artwork 4.png";
+    } 
+    
+     if (mistakes === 4) {
+        document.getElementById("man").src="/images/Untitled-Artwork 5.png";
+    }     
+    
+     if (mistakes === 5) {
+        document.getElementById("man").src="/images/Untitled-Artwork 6.png";
+    }
+
+    if (mistakes === 6) {
+        document.getElementById("man").src="/images/Untitled-Artwork 7.png";
         document.getElementById("pokemonName").innerHTML = "The answer was: " + randomPokemon;
         document.getElementById("gameStatus").innerHTML = "You Lost!";
-      }
+    } 
+}   
+
+function checkWin() {
+    let x = answerPokemon.join('');
+        if (x === randomPokemon) {
+            document.getElementById("gameStatus").innerHTML = 'You Won!!!';
+        }  
+}
+
+initialize();
+
+restartButton.addEventListener("click", restart);
+
+function restart() {
+    document.getElementById("man").src="/images/Untitled-Artwork 1.png";
+    initialize();
+    mistakes = null;
+}
+
+    
+
+
+
+
+
+
+
+
     
 
 
