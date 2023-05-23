@@ -1,6 +1,6 @@
 const pokemon = [
     "MILOTIC",
-    // "TINKATON",
+    "TINKATON",
     // "VOLCARONA",
     // "GENGAR",
     // "AERODACTYL",
@@ -27,15 +27,16 @@ console.log(answerPokemon);
 //set the indexes of the answer to be "_"
 }
 
+pokemonToGuess();
 // function getLetter() {
 letters.forEach(letter => {
     letter.addEventListener("click", () => {
-        console.log(letter)
-        console.log(letter.innerHTML)
+        console.log(letter)      
         letter = letter.innerHTML;
-        
+        console.log(letter)
+        disable(letter);
 //set the text of the button clicked to its respective letter        
-        // disable(letter);
+        
 
             for (let j = 0; j < randomPokemon.length; j++) {
             if(randomPokemon[j] === letter) {
@@ -56,21 +57,22 @@ letters.forEach(letter => {
 // }
 
 
-function initialize() {
-pokemonToGuess();
+// function initialize() {
+// pokemonToGuess();
 
-}
+// }
 
 //to disable the button on click, I need eventlistener to select it 
-// function disable(letter) {
-//     let buttons = document.getElementsByClassName('button');
-//     for(let a = 0; a < buttons.length; a++){
-//         if(randomPokemon[a] === letter) {
-//             buttons[a].disabled = true;
-//             return;
-//        }
-//     }    
-// }
+function disable(letter) {
+    let buttons = document.getElementById(letter);
+    for(let a = 0; a < randomPokemon.length; a++){
+        if(randomPokemon[a] === letter) {
+          
+            buttons.disabled = true;  
+       }
+          
+    }    
+}
 
 
 function checkLoose (letter) {
@@ -82,6 +84,7 @@ function checkLoose (letter) {
     
     mistakes ++; 
      console.log(mistakes);
+    //  changeMan();
     if (mistakes === 1) {
         document.getElementById("man").src="/images/Untitled-Artwork 2.png";
     }
@@ -112,18 +115,19 @@ function checkLoose (letter) {
 function checkWin() {
     let x = answerPokemon.join('');
         if (x === randomPokemon) {
-            document.getElementById("gameStatus").innerHTML = 'You Won!!!';
+            document.getElementById("gameStatus").innerHTML = 'You Won!!!'
         }  
 }
 
-initialize();
+// initialize();
 
 restartButton.addEventListener("click", restart);
 
 function restart() {
     document.getElementById("man").src="/images/Untitled-Artwork 1.png";
-    initialize();
+    pokemonToGuess();
     mistakes = null;
+    document.getElementById("gameStatus").innerHTML = "";
 }
 
     
