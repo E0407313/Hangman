@@ -32,15 +32,56 @@
   
 }
 
+.button:hover {
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  perspective: 1000px;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+  
+  30%, 50%, 70% {
+    transform: translate3d(-2px, 0, 0);
+  }
+  40%, 60% {
+    transform: translate3d(2px, 0, 0);
+  }
+}
+
+/* button hover taken from  https://codepen.io/Birello/pen/MRQWBJ */
+
+.pulse {
+  animation: pulse-animation 2s infinite;
+}
+
+@keyframes pulse-animation {
+  0% {
+    box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
+  }
+}
+
+/* pulse animation taken from https://reactgo.com/css-pulse-animation/ */
+
+
 #restartButton {
   background-color:yellow;
   border-radius: 10px;
 
 }
 
+
 #man {
   display: block;
-  margin-right: 150px;
+  margin-right: 100px;
   width: 300px;
   height: 400px;
 }
@@ -49,4 +90,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+#reset {
+  margin-top: 5px;
+  width: 40px;
+  height: 40px;
+}
+
+#pokeball{
+  float:right;
+  display: flex;
+  width: 200px;
+  height: 200px;
+  margin-top: -150px;
 }
