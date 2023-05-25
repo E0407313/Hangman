@@ -1,7 +1,7 @@
 # Hangman Game
 
 Try out the game here on Varcel:
-[[Hangman](hangman-e3zbdp9ow-e0407313.vercel.app)](https://hangman-nu-seven.vercel.app/)
+[Hangman](https://hangman-nu-seven.vercel.app/)
 
 
 ## Introduction
