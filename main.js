@@ -88,27 +88,27 @@ function checkLoose (letter) {
     mistakes ++; 
      console.log(mistakes);
     if (mistakes === 1) {
-        document.getElementById("man").src="/images/Untitled-Artwork 2.png";
+        document.getElementById("man").src="/images/2.png";
     }
 
     if (mistakes === 2) {
-        document.getElementById("man").src="/images/Untitled-Artwork 3.png";
+        document.getElementById("man").src="/images/3.png";
     }
 
     if (mistakes === 3) {
-        document.getElementById("man").src="/images/Untitled-Artwork 4.png";
+        document.getElementById("man").src="/images/4.png";
     } 
     
      if (mistakes === 4) {
-        document.getElementById("man").src="/images/Untitled-Artwork 5.png";
+        document.getElementById("man").src="/images/5.png";
     }     
     
      if (mistakes === 5) {
-        document.getElementById("man").src="/images/Untitled-Artwork 6.png";
+        document.getElementById("man").src="/images/6.png";
     }
 
     if (mistakes === 6) {
-        document.getElementById("man").src="/images/Untitled-Artwork 7.png";
+        document.getElementById("man").src="/images/7.png";
         document.getElementById("pokemonName").innerHTML = "The answer was: " + randomPokemon;
         document.getElementById("gameStatus").innerHTML = "You Lost!";
         disableAllButtons();
@@ -149,7 +149,7 @@ function restart() {
     initialize();
     
     enableButtons();
-    document.getElementById("man").src="/images/Untitled-Artwork 1.png";    
+    document.getElementById("man").src="/images/1.png";    
     mistakes = 0;
     document.getElementById("gameStatus").innerHTML = "";
     
