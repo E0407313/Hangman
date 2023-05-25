@@ -1,10 +1,10 @@
 const pokemon = [
     "MILOTIC",
-    "TINKATON",
+    // "TINKATON",
     // "VOLCARONA",
     // "GENGAR",
     // "AERODACTYL",
-    // "CRADILY",
+    "CRADILY",
     // "WEEZING"
 ]
 
@@ -12,7 +12,15 @@ const letters = document.querySelectorAll("button");
 
 let randomPokemon = [];
 let answerPokemon = [];
-let mistakes = null;
+let mistakes = 0;
+
+function initialize() {
+    pokemonToGuess();
+    gameLoop();
+    
+    }
+    
+initialize();
 
 function pokemonToGuess() {
 randomPokemon = pokemon[Math.floor(Math.random() * pokemon.length)];
@@ -27,8 +35,8 @@ console.log(answerPokemon);
 //set the indexes of the answer to be "_"
 }
 
-pokemonToGuess();
-// function getLetter() {
+
+function gameLoop() {
 letters.forEach(letter => {
     letter.addEventListener("click", () => {
         console.log(letter)      
@@ -54,24 +62,19 @@ letters.forEach(letter => {
     })
     
 })
-// }
+}
 
-
-// function initialize() {
-// pokemonToGuess();
-
-// }
-
-//to disable the button on click, I need eventlistener to select it 
 function disable(letter) {
     let buttons = document.getElementById(letter);
     for(let a = 0; a < randomPokemon.length; a++){
         if(randomPokemon[a] === letter) {
-          
             buttons.disabled = true;  
+            buttons.style.background = "#AEFD9D";            
+       } else if (randomPokemon[a] !== letter) {
+        buttons.disabled = true; 
+        buttons.style.color = "gray"; 
        }
-          
-    }    
+    }
 }
 
 
@@ -84,7 +87,6 @@ function checkLoose (letter) {
     
     mistakes ++; 
      console.log(mistakes);
-    //  changeMan();
     if (mistakes === 1) {
         document.getElementById("man").src="/images/Untitled-Artwork 2.png";
     }
@@ -109,6 +111,8 @@ function checkLoose (letter) {
         document.getElementById("man").src="/images/Untitled-Artwork 7.png";
         document.getElementById("pokemonName").innerHTML = "The answer was: " + randomPokemon;
         document.getElementById("gameStatus").innerHTML = "You Lost!";
+        disableAllButtons();
+       
     } 
 }   
 
@@ -116,58 +120,39 @@ function checkWin() {
     let x = answerPokemon.join('');
         if (x === randomPokemon) {
             document.getElementById("gameStatus").innerHTML = 'You Won!!!'
+            document.getElementById("pokemonName").innerHTML = "The answer was: " + randomPokemon;   
+            disableAllButtons();
         }  
 }
 
-// initialize();
+function enableButtons() {
+    let buton = document.getElementsByClassName("button");
+    for (let c = 0; c < buton.length; c++) {
+        buton[c].disabled =false;
+        buton[c].style.background = "white";  
+        buton[c].style.color = "#444"; 
+}
+}
+
+function disableAllButtons() {
+    let buuton = document.getElementsByClassName("button");
+    for (let d = 0; d < buuton.length; d++) {
+        buuton[d].disabled =true;
+        buuton[d].style.color = "gray"; 
+    }    
+}
+
 
 restartButton.addEventListener("click", restart);
 
 function restart() {
-    document.getElementById("man").src="/images/Untitled-Artwork 1.png";
-    pokemonToGuess();
-    mistakes = null;
+    initialize();
+    
+    enableButtons();
+    document.getElementById("man").src="/images/Untitled-Artwork 1.png";    
+    mistakes = 0;
     document.getElementById("gameStatus").innerHTML = "";
+    
 }
 
-    
 
-
-
-
-
-
-
-
-    
-
-
-
-
-
-// function checkIfGameWon() {
-//     if (guessedPokemon === correctPokemon) {
-//       document.getElementById("gameStatus").innerHTML = 'You Won!!!';
-//     }
-//   }
-  
-
-
-//   function checkIfGameLost() {
-//     if (mistakes === maxMistakes) {
-//       document.getElementById("pokemonName").innerHTML = "The answer was: " + randomPokemon;
-//       document.getElementById("gameStatus").innerHTML = "You Lost!";
-//     }
-//   }
-
-
-
-// function restart() {
-//     restartButton.addEventListener("click", restart);
-//     mistakes = 0;
-//     guessedPokemon = [];
-    
-//   }
-
-// getPokemon();  
-// checkIfGameLost();
